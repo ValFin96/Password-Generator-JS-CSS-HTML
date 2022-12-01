@@ -95,26 +95,35 @@ var choiceArr =[];
 var yourNewPassword = "";
 
 function generatePassword () {
-  //1. Prompt the user for the password criteria
-  var passwordLength= parseInt (window.prompt ("How long would you like your password to be?"));
+
+  function getPasswordLength (){
+    var passwordLength=window.prompt ("How long would you like your password to be?");
+    console.log(passwordLength);
+    console.log(typeof passwordLength);
     //a. password length between 8 and 128
     if (passwordLength < 8 || passwordLength > 128 || passwordLength == "") {
       window.alert ("The password should be at least 8 characters and no longer than 128 characters");
-      return;
-    } else if (isNaN(parseInt(passwordLength))) {
-      passwordLength = window.prompt("This is not a number. Try again");
-      return;
-    } else {
+      getPasswordLength ();
+    } else if (isNaN(passwordLength)) {
+      window.alert("This is not a number. Try again");
+      getPasswordLength ();
+    };
+    return passwordLength.trim();
+  }
+  //1. Prompt the user for the password criteria
+  var passwordLength = parseInt(getPasswordLength());
+  console.log(passwordLength);
       // window.alert ("Your password will be " + passwordLength + " characters");
       
       upperCase = window.confirm ("Do you want to include uppercase letters?");
       lowerCase = window.confirm ("Do you want to include lowercase letters?");
       numbers = window.confirm ("Do you want to add numbers to your password?");
       symbols = window.confirm ("Do you want to add symbols to your password?");
-    };
+    
     //b.Lowercase, Uppercase, numbers, special characters
       if (!upperCase && !lowerCase && !numbers && !symbols) {
         choiceArr = window.alert("You must choose one!")
+        return;
       }
     //2.Validate the input
       if (upperCase){
@@ -144,11 +153,11 @@ function generatePassword () {
     };
   
   
-  
 
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
