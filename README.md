@@ -22,3 +22,5 @@ Step 3. Random password will be generated once all the prompts are answered.
 ## How it is built
 
 The code starts with variables and arrays declaration. A user is asked to enter the desired length of their password and the code validates if the input is a number via a getPasswordLength function. Once the input is validated, a user is asked to opt in or to opt out for uppercase, lowercase, numbers and symbols to be included in the password. If any of the criteria is true, the characters will be added to the new array that will be randomly lopped over to choose characters randomly for a new password.
+
+[Live URL: GitHub Pages](https://valfin96.github.io/Password-Generator-JS-CSS-HTML/) 
